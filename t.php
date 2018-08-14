@@ -6,6 +6,7 @@
 class Instagram
 {
     function __construct() {
+        error_reporting(0);
         date_default_timezone_set("Asia/Jakarta");
         $this->nc = "\e[0m";
         $this->white = "\e[37m";
