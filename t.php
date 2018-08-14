@@ -474,7 +474,7 @@ $sys = new Instagram();
 $useragent = 'Instagram 12.0.0.7.91 Android (11/1.5.3; 120dpi; 720x1280; Xiaomi; Redmi Note 5A; armani; qcom; en_US)';
 $cookie = 'ds_user=ramadhani.pratama;shbid=18260;shbts=1534182834.3786402;rur=FTW;csrftoken=pyAvNlJOkehGnXWqEt5KLIvPrMcqOKXJ;mid=W3HFsQABAAG0emkK9_NhEOrQ-A16;ds_user_id=4023084043;sessionid=IGSCa7ef7fe5780746548d0f57e499f6945441d45d43689c79e79858777a4ab31f23%3AyqSDljVooO4QyutXg4f9vGxX9XMqT5y4%3A%7B%22_auth_user_id%22%3A4023084043%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%224023084043%3ACBCsGoXoZktBqgTPjwxaUcBbfsA3jndq%3Ae0fdaa7d125e25b587a5bb880b5b665e57d97f81e29887d1a406181df9d8908f%22%2C%22last_refreshed%22%3A1534182834.3792760372%7D;mcd=3;';
 
-        $check = json_decode($sys->checkUser('nanditacn17'));
+        $check = json_decode($sys->checkUser('zuck'));
         $user_id = $check->id;
         $username = $check->username;
 
