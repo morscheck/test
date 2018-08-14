@@ -435,7 +435,7 @@ class Instagram
             }
         }
     }
-    public function FollowTarget($typefollow, $user_id, $delay, $useragent, $cookie, $next_max_id = null, $i = 1, $ij = 0){
+    public function FollowTarget($typefollow, $user_id_target, $delay, $useragent, $cookie, $next_max_id = null, $i = 1, $ij = 0){
         $get = $this->instagram(1, $useragent, 'friendships/'.$user_id.'/'.$typefollow.'?max_id='.$next_max_id, $cookie);
         $obj = json_decode($get[1]);
         @$max_id = $obj->next_max_id;
@@ -463,7 +463,7 @@ class Instagram
         }
         if($max_id) {
             echo "\n".$this->white."[".date("h:i:s")."]".$this->lightblue." NEXT ".$this->white."".$max_id."".$this->white."\n\n";
-            $this->FollowTarget($typefollow, $user_id, $delay, $useragent, $cookie, $max_id, $i, $ij);
+            $this->FollowTarget($typefollow, $user_id_target, $delay, $useragent, $cookie, $max_id, $i, $ij);
         }
         $i--;
     }
