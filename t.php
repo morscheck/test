@@ -460,7 +460,7 @@ class Instagram
             //    sleep($delay);
             //    $ij = 0;
             //}
-            echo $this->white."[".date("h:i:s")."]".$this->lightblue." @".$this->white."@".$username."".$this->white."\n";
+            echo $this->white."[".date("h:i:s")."][".$ij."]".$this->lightblue." @".$this->white."".$username."".$this->white."\n";
             //print '<pre>'.print_r($ij.' -> '.$username,1).'</pre>';
             //$i++;
         }
