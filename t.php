@@ -466,7 +466,7 @@ class Instagram
         }
         if($max_id) {
             echo "\n".$this->white."[".date("h:i:s")."]".$this->lightblue." NEXT ".$this->white."".$max_id."".$this->white."\n\n";
-            sleep(1);
+            sleep(5);
             $this->FollowTarget($typef, $target, $delay, $useragent, $cookie, $max_id, $i, $ij);
             exit();
         }
