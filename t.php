@@ -436,7 +436,7 @@ class Instagram
         }
     }
     public function FollowTarget($typefollow, $user_id_target, $delay, $useragent, $cookie, $next_max_id = null, $i = 1, $ij = 0){
-        $get = $this->instagram(1, $useragent, 'friendships/'.$user_id.'/'.$typefollow.'?max_id='.$next_max_id, $cookie);
+        $get = $this->instagram(1, $useragent, 'friendships/'.$user_id_target.'/'.$typefollow.'?max_id='.$next_max_id, $cookie);
         $obj = json_decode($get[1]);
         @$max_id = $obj->next_max_id;
 
