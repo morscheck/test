@@ -463,7 +463,7 @@ class Instagram
         }
         if($max_id) {
             echo "\n".$this->white."[".date("h:i:s")."]".$this->lightblue." NEXT ".$this->white."".$max_id."".$this->white."\n\n";
-            $this->FollowTarget($typef, $user_id, $delay, $useragent, $cookie, $max_id, $i, $ij);
+            $this->FollowTarget($typefollow, $user_id, $delay, $useragent, $cookie, $max_id, $i, $ij);
         }
         $i--;
     }
