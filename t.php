@@ -391,9 +391,9 @@ class Instagram
             echo "".$this->lighgreen."Option : ".$this->white;
             $type = trim(fgets(STDIN));
             if($type == "1"){
-                $typef = 'followers';
+                $typefollow = 'followers';
             }else if($type == "2"){
-                $typef = 'following';
+                $typefollow = 'following';
             }else{
                 echo "".$this->lighgreen."Target : ".$this->white."\n";
                 echo " -> 1. ".$this->lightcyan."Followers".$this->white."\n";
@@ -408,7 +408,7 @@ class Instagram
             echo "\n";
             echo "".$this->white."---Proccess running----";
             echo "\n";
-            echo $this->FollowTarget($typef, $target, $delay, $status->useragent, $status->cookie);
+            echo $this->FollowTarget($typefollow, $target, $delay, $status->useragent, $status->cookie);
             echo $this->orange."\nProccess complete. Run Again? ".$this->white."y/n";
             echo "\nSelect option : ".$this->lighgreen."";
             $option = trim(fgets(STDIN));
@@ -435,11 +435,8 @@ class Instagram
             }
         }
     }
-    public function FollowTarget($typef, $target, $delay, $useragent, $cookie, $next_max_id = null, $i = 1, $ij = 0){
-        $check = json_decode($this->checkUser($target));
-        $user_id = $check->id;
-        $username = $check->username;
-        $get = $this->instagram(1, $useragent, 'friendships/'.$user_id.'/'.$typef.'?max_id='.$next_max_id, $cookie);
+    public function FollowTarget($typefollow, $user_id, $delay, $useragent, $cookie, $next_max_id = null, $i = 1, $ij = 0){
+        $get = $this->instagram(1, $useragent, 'friendships/'.$user_id.'/'.$typefollow.'?max_id='.$next_max_id, $cookie);
         $obj = json_decode($get[1]);
         @$max_id = $obj->next_max_id;
 
@@ -466,7 +463,7 @@ class Instagram
         }
         if($max_id) {
             echo "\n".$this->white."[".date("h:i:s")."]".$this->lightblue." NEXT ".$this->white."".$max_id."".$this->white."\n\n";
-            $this->FollowTarget($typef, $target, $delay, $useragent, $cookie, $max_id, $i, $ij);
+            $this->FollowTarget($typef, $user_id, $delay, $useragent, $cookie, $max_id, $i, $ij);
         }
         $i--;
     }
@@ -475,6 +472,11 @@ $sys = new Instagram();
 //echo $sys->Dashboard();
 $useragent = 'Instagram 12.0.0.7.91 Android (11/1.5.3; 120dpi; 720x1280; Xiaomi; Redmi Note 5A; armani; qcom; en_US)';
 $cookie = 'ds_user=ramadhani.pratama;shbid=18260;shbts=1534182834.3786402;rur=FTW;csrftoken=pyAvNlJOkehGnXWqEt5KLIvPrMcqOKXJ;mid=W3HFsQABAAG0emkK9_NhEOrQ-A16;ds_user_id=4023084043;sessionid=IGSCa7ef7fe5780746548d0f57e499f6945441d45d43689c79e79858777a4ab31f23%3AyqSDljVooO4QyutXg4f9vGxX9XMqT5y4%3A%7B%22_auth_user_id%22%3A4023084043%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A1%2C%22_token_ver%22%3A2%2C%22_token%22%3A%224023084043%3ACBCsGoXoZktBqgTPjwxaUcBbfsA3jndq%3Ae0fdaa7d125e25b587a5bb880b5b665e57d97f81e29887d1a406181df9d8908f%22%2C%22last_refreshed%22%3A1534182834.3792760372%7D;mcd=3;';
-$get = $sys->FollowTarget('followers', 'nanditacn17', "1", $useragent, $cookie);
+
+        $check = json_decode($sys->checkUser('nanditacn17'));
+        $user_id = $check->id;
+        $username = $check->username;
+
+$get = $sys->FollowTarget('followers', $user_id, "1", $useragent, $cookie);
 //print '<pre>'.print_r($get,1).'</pre>';
 echo $get;
